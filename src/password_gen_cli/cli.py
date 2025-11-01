@@ -29,7 +29,7 @@ def main():
     parser.add_argument(
         '--no-numbers', 
         action='store_true',
-        help="EExcludes numbers in the generated password."
+        help="Excludes numbers in the generated password."
     )
     
     # 2. Parse the arguments from command line.
@@ -46,7 +46,7 @@ def main():
         )
         
         # 4. Print the resulting password.
-        print(f"\nContraseña generada (Longitud: {args.length}):")
+        print(f"\nGenerated password (length: {args.length}):")
         print("-" * (args.length + 30))
         print(f"{password}\n")
 
