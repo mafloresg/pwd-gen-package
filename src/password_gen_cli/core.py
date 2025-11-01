@@ -14,10 +14,6 @@ def generate_password(length: int=12, include_symbols: bool=True, include_number
     if include_symbols:
         # Common symbols for passwords, excluding spaces and quotes
         characters += string.punctuation 
-    
-    # Check if character set is empty
-    if not characters:
-        raise ValueError("El conjunto de caracteres está vacío. ¡Revisa los parámetros!")
 
     # 2. Select random characters to form the password
     # random.choice selects a random element from the given sequence

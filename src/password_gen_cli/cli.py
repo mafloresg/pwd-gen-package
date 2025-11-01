@@ -3,40 +3,41 @@ from .core import generate_password
 
 def main():
     """
-    Define la interfaz de línea de comandos y ejecuta la generación.
+    Defines command-line interface and runs password generation.
     """
-    # 1. Configurar ArgumentParser
+    # 1. Configure ArgumentParser.
     parser = argparse.ArgumentParser(
         description="Command line password generator."
     )
     
-    # Argumento requerido para la longitud
+    # Password length argument.
     parser.add_argument(
         '-l', '--length', 
         type=int, 
         default=12, 
-        help="La longitud deseada para la contraseña (por defecto: 12)."
+        help="Desired length of the password, by default the value is 12."
     )
     
-    # Argumento opcional para excluir símbolos (flag)
+    # Optional arg to exclude special charaters (flag).
     parser.add_argument(
         '--no-symbols', 
         action='store_true',  # Al estar presente, establece el valor a True
-        help="Excluye los símbolos de la contraseña generada."
+        help="Excludes special characters in the generated password."
     )
     
-    # Argumento opcional para excluir números (flag)
+    # Optional arg to exclude special numbers (flag).
     parser.add_argument(
         '--no-numbers', 
         action='store_true',
-        help="Excluye los números de la contraseña generada."
+        help="EExcludes numbers in the generated password."
     )
     
-    # 2. Parsear los argumentos del usuario
+    # 2. Parse the arguments from command line.
     args = parser.parse_args()
     
-    # 3. Llamar a la función de generación
-    # Usamos not args.no_symbols porque queremos incluir símbolos por defecto
+    # 3. Generate the password.
+    # args.no_symbols includes special characters if False
+    # args.no_numbers includes numbers if False
     try:
         password = generate_password(
             length=args.length,
@@ -44,7 +45,7 @@ def main():
             include_numbers=not args.no_numbers
         )
         
-        # 4. Imprimir el resultado
+        # 4. Print the resulting password.
         print(f"\nContraseña generada (Longitud: {args.length}):")
         print("-" * (args.length + 30))
         print(f"{password}\n")
